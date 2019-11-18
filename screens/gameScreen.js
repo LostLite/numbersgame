@@ -1,7 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, Text, StyleSheet, Button, Alert} from 'react-native';
-import {Card} from '../components/card'
-import NumberContainer from '../components/numberContainer'
+import {View, StyleSheet, Alert} from 'react-native';
+import {Card} from '../components/card';
+import NumberContainer from '../components/numberContainer';
+import BodyText from '../components/bodyText';
+import MainButton from '../components/mainButton';
 
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
@@ -48,11 +50,11 @@ export default function GameScreen({userChoice, onGameOver}) {
 
     return (
         <View style={styles.container}>
-            <Text>Opponent's Guess</Text>
+            <BodyText>Opponent's Guess</BodyText>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card style={styles.buttonContainer}>
-                <View style={styles.button}><Button title="LOWER" onPress={()=> nextGuessHandler('lower')}/></View> 
-                <View style={styles.button}><Button title="GREATER" onPress={()=> nextGuessHandler('greater')}/></View> 
+                <MainButton onPress={()=> nextGuessHandler('lower')}>LOWER</MainButton>
+                <MainButton onPress={()=> nextGuessHandler('greater')}>GREATER</MainButton>
             </Card>
         </View>
     )
@@ -68,8 +70,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: 20,
-        width: 300,
-        maxWidth: '80%'
+        width: 400,
+        maxWidth: '90%'
     },
     button: {
         width: '40%'
